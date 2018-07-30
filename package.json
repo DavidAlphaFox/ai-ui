@@ -1,0 +1,36 @@
+{
+  "name": "ai-ui",
+  "version": "0.0.1",
+  "description": "A StyleSheet Named AI-UI",
+  "scss": "src/index.scss",
+  "main": "css/ai.css",
+  "style": "css/ai.css",
+  "scripts": {
+    "build": "npm run build-clean && npm run copy && npm run build-scss && npm run build-scss-minify && npm run build-autoprefix",
+    "build-clean": "rimraf css",
+    "build-scss": "node-sass --output-style expanded --source-map true src/index.scss css/ai.css",
+    "build-scss-minify": "node-sass --output-style compressed --source-map true src/index.scss css/ai.min.css",
+    "build-autoprefix": "postcss --use autoprefixer -c postcss.json css/*.css -d css/",
+    "copy": "copyfiles -f src/fonts/*.* css/fonts/",
+    "prepublish": "npm run build",
+    "start": "npm run build-scss -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": " git@github.com:DavidAlphaFox/ai-ui.git"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "framework"
+  ],
+  "author": "David Gao <david.alpha.fox@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "copyfiles": "^1.2.0",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.1.0",
+    "rimraf": "^2.6.1"
+  }
+}
